@@ -1,0 +1,90 @@
+<h2>Crear Pedido</h2>
+
+<!-- DATOS CLIENTE -->
+<input [(ngModel)]="pedido.clienteNombre" placeholder="Nombre cliente">
+<input [(ngModel)]="pedido.clienteTelefono" placeholder="Teléfono">
+<input [(ngModel)]="pedido.direccionEnvio" placeholder="Dirección">
+
+<!-- TIPO TRANSPORTE -->
+<select [(ngModel)]="pedido.tipoTransporte"
+        (change)="actualizarMateriales(); cargarTransportistas()">
+  <option value="CAMIONERO">Camionero</option>
+  <option value="VOLQUETERO">Volquetero</option>
+</select>
+
+<!-- TRANSPORTISTA -->
+<select [(ngModel)]="pedido.transportistaId">
+  <option *ngFor="let t of transportistas" [value]="t.id">
+    {{ t.nombre }} {{ t.apellidos }}
+  </option>
+</select>
+
+<!-- MATERIAL (DINÁMICO) -->
+<select [(ngModel)]="pedido.material">
+  <option value="PANDERETA">Pandereta</option>
+  <option value="TECHO">Techo</option>
+
+  <option value="ARENA_GRUESA">Arena Gruesa</option>
+  <option value="ARENA_FINA">Arena Fina</option>
+  <option value="ARENA_ASENTAR">Arena Asentar</option>
+  <option value="PIEDRA">Piedra</option>
+  <option value="DESMONTE">Desmonte</option>
+</select>
+
+<!-- CANTIDAD -->
+<input type="number" [(ngModel)]="pedido.cantidad" placeholder="Cantidad">
+
+<!-- MONTO TOTAL -->
+<input type="number" [(ngModel)]="pedido.montoTotal" placeholder="Monto total">
+
+<!-- ADELANTO -->
+<input type="number" [(ngModel)]="pedido.adelanto" placeholder="Adelanto">
+
+<!-- PISO -->
+<input type="number" [(ngModel)]="pedido.piso" placeholder="Piso (ej: 1, 2, 3)">
+
+<!-- HORA ENVÍO -->
+<input type="datetime-local" [(ngModel)]="pedido.horaEnvio">
+
+<br><br>
+
+<button (click)="crearPedido()">Crear Pedido</button>
+
+
+<hr>
+
+<h2>Lista de Pedidos</h2>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Cliente</th>
+    <th>Teléfono</th>
+    <th>Direccion de Envio</th>
+    <th>Material</th>
+    <th>Cantidad</th>
+    <th>Monto Total</th>
+    <th>Adelanto</th>
+    <th>Piso</th>
+    <th>Hora Envio</th>
+    <th>Transportista</th>
+    <th>Codigo de Verificacion</th>
+    <th>Estado</th>
+
+  </tr>
+
+  <tr *ngFor="let p of pedidos">
+    <td>{{ p.id }}</td>
+    <td>{{ p.clienteNombre }}</td>
+    <td>{{ p.clienteTelefono }}</td>
+    <td>{{ p.direccionEnvio }}</td>
+    <td>{{ p.material }}</td>
+    <td>{{ p.cantidad }}</td>
+    <td>{{ p.montoTotal }}</td>
+    <td>{{ p.adelanto }}</td>
+    <td>{{ p.piso }}</td>
+    <td>{{ p.horaEnvio }}</td>
+    <td>{{ p.transportistaId }}</td>
+    <td>{{ p.codigoVerificacion }}</td>
+  </tr>
+</table>

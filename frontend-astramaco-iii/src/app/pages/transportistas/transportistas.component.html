@@ -1,0 +1,57 @@
+<h2>Crear Transportista</h2>
+
+<input [(ngModel)]="transportista.nombre" placeholder="Nombre">
+<input [(ngModel)]="transportista.apellidos" placeholder="Apellidos">
+<input [(ngModel)]="transportista.dni" placeholder="DNI">
+
+<input type="number" [(ngModel)]="transportista.edad" placeholder="Edad">
+
+<select [(ngModel)]="transportista.tipoTransporte">
+  <option value="CAMIONERO">Camionero</option>
+  <option value="VOLQUETERO">Volquetero</option>
+</select>
+
+<input [(ngModel)]="transportista.placa" placeholder="Placa">
+<input [(ngModel)]="transportista.vehiculoInfo" placeholder="Vehículo">
+
+<input type="number" [(ngModel)]="transportista.capacidad" placeholder="Capacidad (solo volquetero)">
+
+<select [(ngModel)]="transportista.estado">
+  <option value="ACTIVO">Activo</option>
+  <option value="INACTIVO">Inactivo</option>
+</select>
+
+<br><br>
+
+<button (click)="crear()">Crear</button>
+
+
+<h2>Lista de Transportistas</h2>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>DNI</th>
+    <th>Edad</th>
+    <th>Tipo de Transporte</th>
+    <th>Placa</th>
+    <th>Vehiculo Informacion</th>
+    <th>Capacidad</th>
+    <th>Estado</th>
+  </tr>
+
+  <tr *ngFor="let t of transportistas">
+    <td>{{ t.id }}</td>
+    <td>{{ t.nombre }}</td>
+    <td>{{ t.apellidos }}</td>
+    <td>{{ t.dni }}</td>
+    <td>{{ t.edad }}</td>
+    <td>{{ t.tipoTransporte }}</td>
+    <td>{{ t.placa }}</td>
+    <td>{{ t.vehiculoInfo }}</td>
+    <td>{{ t.capacidad }}</td>
+    <td>{{ t.estado }}</td>
+  </tr>
+</table>

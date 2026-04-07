@@ -1,0 +1,20 @@
+<div *ngIf="isLoggedIn(); else loginTemplate">
+
+  <h1>Sistema Astramaco</h1>
+
+  <nav>
+    <a routerLink="/pedidos">Pedidos</a>
+    <a routerLink="/transportistas">Transportistas</a>
+  </nav>
+
+  <button (click)="logout()">Cerrar sesión</button>
+
+  <hr>
+
+  <router-outlet></router-outlet>
+
+</div>
+
+<ng-template #loginTemplate>
+  <router-outlet></router-outlet>
+</ng-template>
